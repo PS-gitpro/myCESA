@@ -40,7 +40,7 @@
 
         section {
             min-height: 100vh;
-            padding: 10rem 9% 2rem;
+            padding: 10rem 5% 2rem;
         }
 
         /* Header Styles */
@@ -49,7 +49,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 2rem 9%;
+            padding: 2rem 5%;
             background-color: var(--bg-color);
             display: flex;
             justify-content: space-between;
@@ -143,6 +143,12 @@
             justify-content: space-between;
             align-items: center;
             gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .home-content {
+            flex: 1;
+            min-width: 300px;
         }
 
         .home-content h3 {
@@ -208,14 +214,18 @@
         }
 
         .home-img {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-width: 300px;
         }
 
         .home-img img {
-            width: 32vw;
-            height: 32vw;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 1/1;
             border-radius: 50%;
             object-fit: cover;
             border: 0.5rem solid var(--main-color);
@@ -368,7 +378,7 @@
         /* Footer Section */
         .footer {
             background: var(--bg-color);
-            padding: 6rem 9% 4rem;
+            padding: 6rem 5% 4rem;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -452,6 +462,26 @@
             }
         }
 
+        @media (max-width: 991px) {
+            section {
+                padding: 10rem 4% 2rem;
+            }
+            
+            .header {
+                padding: 2rem 4%;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .home-content h1 {
+                font-size: 4.8rem;
+            }
+            
+            .event-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
             #menu-icon {
                 display: block;
@@ -478,6 +508,8 @@
                 display: block;
                 margin: 2.5rem 0;
                 text-align: center;
+                font-size: 2rem;
+                margin-left: 0;
             }
             
             .dropdown-content {
@@ -509,6 +541,28 @@
             .contact-info p {
                 justify-content: center;
             }
+            
+            .home-content h1 {
+                font-size: 4.2rem;
+            }
+            
+            .home-content h3 {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .home-content h1 {
+                font-size: 3.8rem;
+            }
+            
+            .event-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .heading {
+                font-size: 3.8rem;
+            }
         }
 
         @media (max-width: 450px) {
@@ -517,15 +571,40 @@
             }
             
             .home-content h1 {
-                font-size: 4.5rem;
-            }
-            
-            .event-container {
-                grid-template-columns: 1fr;
+                font-size: 3.5rem;
             }
             
             .heading {
                 font-size: 3.5rem;
+            }
+            
+            .event-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            section {
+                padding: 10rem 3% 2rem;
+            }
+        }
+
+        @media (max-width: 365px) {
+            .home-img img {
+                width: 80vw;
+                height: 80vw;
+            }
+            
+            .home-content h1 {
+                font-size: 3.2rem;
+            }
+            
+            .home-content h3 {
+                font-size: 2.2rem;
+            }
+            
+            .social-media a {
+                width: 4rem;
+                height: 4rem;
+                font-size: 1.8rem;
             }
         }
 
@@ -607,7 +686,7 @@
         <div class="home-img" data-aos="fade-left">
             <!-- CESA Logo -->
             <img src="images/cesa logo 2.png" alt="CESA Logo" 
-                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTIwIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iNSIgLz4KICA8dGV4dCB4PSIxNTAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQ4IiBmaWxsPSIjNjZmY2YxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DRVNBPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTkwIiBZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjY2ZjNmM3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4ySzI0PC90ZXh0Pgo8L3N2Zz4K'"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTIwIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iNSIgLz4KICA8dGV4dCB4PSIxNTAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQ4IiBmaWxsPSIjNjZmY2YxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DRVNBPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6U9IjI0IiBmaWxsPSIjY2ZjNmM3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4ySzI0PC90ZXh0Pgo8L3N2Zz4K'"
                  class="image-loading">
         </div>
     </section>
@@ -628,7 +707,7 @@
                 <i class='bx bx-code-alt'></i>
                 <h3>Technical</h3>
                 <img class="event-img" src="images/technical images 1.jpg" alt="Technical Event"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxwYXRoIGQ9Ik03MCA3MCBMMTMwIDEzMCBNMTMwIDcwIEw3MCAxMzAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNjAgODAgTDIyMCA4MCBNMTYwIDEyMCBMMjIwIDEyMCBNMTYwIDEwMCBMMjIwIDEwMCIgc3Ryb2tlPSIjNjZmY2YxIiBzdHJva2Utd2lkdGg9IjMiIC8+CiAgPHRleHQgeD0iMjk1IiB5PSIxMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2NmYzZjNyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaG5pY2FsIEV2ZW50czwvdGV4dD4KPC9zdmc+'" class="image-loading">
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSI gaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxwYXRoIGQ9Ik03MCA3MCBMMTMwIDEzMCBNMTMwIDcwIEw3MCAxMzAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNjAgODAgTDIyMCA4MCBNMTYwIDEyMCBMMjIwIDEyMCBNMTYwIDEwMCBMMjIwIDEwMCIgc3Ryb2tlPSIjNjZmY2YxIiBzdHJva2Utd2lkdGg9IjMiIC8+CiAgPHRleHQgeD0iMjk1IiB5PSIxMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2NmYzZjNyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaG5pY2FsIEV2ZW50czwvdGV4dD4KPC9zdmc+'" class="image-loading">
                 <p>Driving innovation and progress, our dynamic Technical Team pushes technology's boundaries, turning ideas into real-world solutions for positive digital change.</p>
                 <a href="techevent.html" class="btn">Know More</a>
             </div>
@@ -650,7 +729,7 @@
         <div class="team-container">
             <div class="team-img" data-aos="fade-right">
                 <img src="images/tecnical team jpg.jpg" alt="Team Photo"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxjaXJjbGUgY3g9IjQ1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNFU0EgVGVhbTwvdGV4dD4KPC9zdmc+'"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxjaXJjbGUgY3g9IjQ1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9y="
                      class="image-loading">
             </div>
             <div class="team-content" data-aos="fade-left">
