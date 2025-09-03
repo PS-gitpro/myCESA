@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Events - CESA</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0b0c10;
+            color: #cfc6c7;
+            font-family: "Poppins", sans-serif;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(rgba(11, 12, 16, 0.9), rgba(11, 12, 16, 0.7)), url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #66fcf1;
+        }
+        
+        h1 {
+            color: #66fcf1;
+            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            color: #cfc6c7;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: #66fcf1;
+            color: #0b0c10;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        
+        .back-btn:hover {
+            background: #45a29e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 252, 241, 0.3);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .event-card {
+            background: #1f2833;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(102, 252, 241, 0.2);
+        }
+        
+        .event-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #66fcf1;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-title {
+            color: #66fcf1;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .event-desc {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .event-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .event-details i {
+            margin-right: 0.5rem;
+            color: #66fcf1;
+        }
+        
+        .register-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            color: #66fcf1;
+            border: 2px solid #66fcf1;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .register-btn:hover {
+            background: #66fcf1;
+            color: #0b0c10;
+        }
+        
+        .countdown {
+            background: #1f2833;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        .countdown-title {
+            color: #66fcf1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .timer-unit {
+            background: #0b0c10;
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 80px;
+            border: 1px solid #66fcf1;
+        }
+        
+        .timer-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #66fcf1;
+        }
+        
+        .timer-label {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            color: #cfc6c7;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: #1f2833;
+            border-top: 2px solid #66fcf1;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: #cfc6c7;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #66fcf1;
+        }
+        
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer {
+                flex-wrap: wrap;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CESA Technical Events 2023-24</h1>
+            <p class="subtitle">Join us for an exciting series of technical competitions and workshops. Showcase your skills, innovate with the best, and be part of the ultimate tech experience!</p>
+            <a href="index.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="countdown">
+            <h2 class="countdown-title">Countdown to Next Event</h2>
+            <div class="timer">
+                <div class="timer-unit">
+                    <div class="timer-value" id="days">00</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="hours">00</div>
+                    <div class="timer-label">Hours</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="minutes">00</div>
+                    <div class="timer-label">Minutes</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="seconds">00</div>
+                    <div class="timer-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="events-grid">
+            <!-- Event 1 - Engineering Day -->
+            <div class="event-card">
+                <!-- 
+                    SOURCE PATH: "C:\Users\conta\OneDrive\Desktop\Project Prateek\college-event-management\images\engineering-day.jpeg"
+                    Place this image in an "images" folder and name it "engineering-day.jpeg"
+                -->
+                <img src="images/engineering-day.jpeg" alt="Engineering Day: Byte Battle 2K23" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Engineering Day: Byte Battle 2K23</h3>
+                    <p class="event-desc">A technical quiz competition organized by CESA in collaboration with Institution's Innovation Council, a Ministry of Education Initiative.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Sept 15, 2023</div>
+                        <div><i class='bx bx-time'></i> 10:00 AM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Computer Engineering Dept</div>
+                    </div>
+                    <button class="register-btn">Register Now</button>
+                </div>
+            </div>
+
+            <!-- Event 2 - Code Marathon -->
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Code Marathon" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Code Marathon</h3>
+                    <p class="event-desc">24-hour coding competition. Solve real-world problems using your programming skills. Individual or team participation.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Nov 8, 2023</div>
+                        <div><i class='bx bx-time'></i> 12:00 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Lab 1</div>
+                    </div>
+                    <button class="register-btn">Register Now</button>
+                </div>
+            </div>
+
+            <!-- Event 3 - AI Innovation Challenge -->
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="AI Innovation Challenge" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">AI Innovation Challenge</h3>
+                    <p class="event-desc">Develop innovative solutions using artificial intelligence. Work with provided datasets and APIs to create impactful projects.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Nov 12, 2023</div>
+                        <div><i class='bx bx-time'></i> 10:00 AM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> AI Lab</div>
+                    </div>
+                    <button class="register-btn">Register Now</button>
+                </div>
+            </div>
+
+            <!-- Event 4 - Data Science Competition -->
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Data Science Competition" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Data Science Competition</h3>
+                    <p class="event-desc">Analyze complex datasets and derive meaningful insights. Use statistical models and machine learning to solve challenges.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Nov 22, 2023</div>
+                        <div><i class='bx bx-time'></i> 1:00 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> AI Lab</div>
+                    </div>
+                    <button class="register-btn">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2023-24 Computer Engineering Student Association (CESA). All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown timer functionality
+        function updateCountdown() {
+            // Set to the next upcoming event date
+            const eventDate = new Date('September 15, 2023 10:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            if (distance < 0) {
+                document.getElementById("days").innerText = "0";
+                document.getElementById("hours").innerText = "0";
+                document.getElementById("minutes").innerText = "0";
+                document.getElementById("seconds").innerText = "0";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Register button functionality
+        document.querySelectorAll('.register-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const eventTitle = this.parentElement.querySelector('.event-title').innerText;
+                alert(`Thank you for your interest in ${eventTitle}! Registration details will be sent to you shortly.`);
+            });
+        });
+    </script>
+</body>
+</html>

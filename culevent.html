@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Events - CESA</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0b0c10;
+            color: #cfc6c7;
+            font-family: "Poppins", sans-serif;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(rgba(11, 12, 16, 0.9), rgba(11, 12, 16, 0.7)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ff5e7d;
+        }
+        
+        h1 {
+            color: #ff5e7d;
+            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .subtitle {
+            color: #cfc6c7;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: #ff5e7d;
+            color: #0b0c10;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        
+        .back-btn:hover {
+            background: #ff3b68;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 94, 125, 0.3);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .event-card {
+            background: #1f2833;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 94, 125, 0.2);
+        }
+        
+        .event-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #ff5e7d;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-title {
+            color: #ff5e7d;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        
+        .event-desc {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+        
+        .event-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+        
+        .event-details i {
+            margin-right: 0.5rem;
+            color: #ff5e7d;
+        }
+        
+        .register-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            color: #ff5e7d;
+            border: 2px solid #ff5e7d;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .register-btn:hover {
+            background: #ff5e7d;
+            color: #0b0c10;
+        }
+        
+        .countdown {
+            background: #1f2833;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        .countdown-title {
+            color: #ff5e7d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .timer-unit {
+            background: #0b0c10;
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 80px;
+            border: 1px solid #ff5e7d;
+        }
+        
+        .timer-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ff5e7d;
+        }
+        
+        .timer-label {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            color: #cfc6c7;
+        }
+        
+        .cultural-highlights {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .highlight {
+            flex: 1;
+            min-width: 250px;
+            background: #1f2833;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .highlight i {
+            font-size: 2.5rem;
+            color: #ff5e7d;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight h3 {
+            color: #ff5e7d;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: #1f2833;
+            border-top: 2px solid #ff5e7d;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: #cfc6c7;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: #ff5e7d;
+        }
+        
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer {
+                flex-wrap: wrap;
+            }
+            
+            .cultural-highlights {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CESA Cultural Events 2023-24</h1>
+            <p class="subtitle">Celebrate diversity and creativity through our vibrant cultural events. Experience the rich traditions and celebrations organized by the Computer Engineering Student Association!</p>
+            <a href="index.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="countdown">
+            <h2 class="countdown-title">Countdown to Next Event</h2>
+            <div class="timer">
+                <div class="timer-unit">
+                    <div class="timer-value" id="days">00</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="hours">00</div>
+                    <div class="timer-label">Hours</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="minutes">00</div>
+                    <div class="timer-label">Minutes</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="seconds">00</div>
+                    <div class="timer-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cultural-highlights">
+            <div class="highlight">
+                <i class='bx bx-calendar-event'></i>
+                <h3>Celebrations</h3>
+                <p>Marking important occasions with traditional ceremonies</p>
+            </div>
+            <div class="highlight">
+                <i class='bx bx-party'></i>
+                <h3>Social Events</h3>
+                <p>Building community through fun gatherings and parties</p>
+            </div>
+            <div class="highlight">
+                <i class='bx bx-group'></i>
+                <h3>Student Participation</h3>
+                <p>Events organized by and for students</p>
+            </div>
+            <div class="highlight">
+                <i class='bx bx-food-menu'></i>
+                <h3>Cultural Traditions</h3>
+                <p>Honoring our rich cultural heritage</p>
+            </div>
+        </div>
+
+        <div class="events-grid">
+            <!-- Event 1 - Teachers Day -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR TEACHERS DAY IMAGE -->
+                <img src="images/teachers-day.jpg" alt="Teachers Day Celebration" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Teachers Day Celebration</h3>
+                    <p class="event-desc">Honoring our educators for their dedication and guidance in shaping the future of computer engineering students.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Sept 5, 2024</div>
+                        <div><i class='bx bx-time'></i> 3:30 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Jayawant Sabhagrah, JSCOE</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+
+            <!-- Event 2 - Guru Purnima -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR GURU PURNIMA IMAGE -->
+                <img src="images/guru-purnima.jpg" alt="Guru Purnima Celebration" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Guru Purnima Celebration</h3>
+                    <p class="event-desc">Express gratitude for your Gurus' wisdom and guidance, seeking their blessings to dispel ignorance and lead toward enlightenment.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> July 21, 2024</div>
+                        <div><i class='bx bx-time'></i> 3:30 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Seminar Hall, Computer Engineering Dept</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+
+            <!-- Event 3 - Freshers Party -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR FRESHERS PARTY IMAGE -->
+                <img src="images/freshers-party.jpg" alt="Freshers Party" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Freshers Party</h3>
+                    <p class="event-desc">Welcome new students to the Computer Engineering family with a Bollywood/Retro themed party filled with fun and excitement.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Sept 28, 2023</div>
+                        <div><i class='bx bx-time'></i> 1:00 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Seminar Hall, Computer Department</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+
+            <!-- Event 4 - Farewell Party -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR FAREWELL PARTY IMAGE -->
+                <img src="images/farewell-party.jpg" alt="Farewell Party" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Farewell Party: Batch 2023</h3>
+                    <p class="event-desc">"The Great Escape: From College to Career" - A memorable farewell for our graduating students as they embark on their professional journeys.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> April 16, 2023</div>
+                        <div><i class='bx bx-time'></i> 6:00 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Hotel Garden Gate</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2023-24 Computer Engineering Student Association (CESA). All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown timer functionality - set to next event date
+        function updateCountdown() {
+            // Set to the next upcoming event date
+            const eventDate = new Date('July 21, 2024 15:30:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            if (distance < 0) {
+                document.getElementById("days").innerText = "0";
+                document.getElementById("hours").innerText = "0";
+                document.getElementById("minutes").innerText = "0";
+                document.getElementById("seconds").innerText = "0";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Register button functionality
+        document.querySelectorAll('.register-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const eventTitle = this.parentElement.querySelector('.event-title').innerText;
+                alert(`Thank you for your interest in ${eventTitle}! This event has already taken place.`);
+            });
+        });
+    </script>
+</body>
+</html>
