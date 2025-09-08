@@ -344,6 +344,12 @@
             border: 2px solid var(--main-color);
         }
 
+        .event-box h3 {
+            font-size: 3rem; /* Increased font size for event headers */
+            margin-bottom: 1.5rem;
+            color: var(--main-color);
+        }
+
         .event-box p {
             font-size: 1.6rem;
             margin-bottom: 2.5rem;
@@ -407,6 +413,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 4rem;
+            position: relative;
         }
 
         .footer-column {
@@ -462,6 +469,32 @@
         .contact-info i {
             color: var(--main-color);
             font-size: 2rem;
+        }
+
+        /* Made with love text */
+        .made-with-love {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--text-color);
+            margin-top: 2rem;
+            width: 100%;
+        }
+
+        .made-with-love span {
+            color: #ff5e7d;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.3); }
+            60% { transform: scale(1); }
         }
 
         /* Responsive Design */
@@ -573,6 +606,10 @@
             .home-content h3 {
                 font-size: 2.6rem;
             }
+            
+            .event-box h3 {
+                font-size: 2.6rem; /* Adjusted for mobile */
+            }
         }
 
         @media (max-width: 580px) {
@@ -586,6 +623,10 @@
             
             .heading {
                 font-size: 3.8rem;
+            }
+            
+            .event-box h3 {
+                font-size: 2.4rem; /* Adjusted for smaller screens */
             }
         }
 
@@ -609,6 +650,14 @@
             section {
                 padding: 10rem 3% 2rem;
             }
+            
+            .event-box h3 {
+                font-size: 2.2rem; /* Adjusted for very small screens */
+            }
+            
+            .made-with-love {
+                font-size: 1.4rem;
+            }
         }
 
         @media (max-width: 365px) {
@@ -629,6 +678,10 @@
                 width: 4rem;
                 height: 4rem;
                 font-size: 1.8rem;
+            }
+            
+            .event-box h3 {
+                font-size: 2rem; /* Adjusted for smallest screens */
             }
         }
 
@@ -720,7 +773,7 @@
         <div class="home-img" data-aos="fade-left">
             <!-- CESA Logo -->
             <img src="images/cesa logo 2.png" alt="CESA Logo" 
-                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTIwIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iNSIgLz4KICA8dGV4dCB4PSIxNTAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjQ4IiBmaWxsPSIjNjZmY2YxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DRVNBPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6U9IjI0IiBmaWxsPSIjY2ZjNmM3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4ySzI0PC90ZXh0Pgo8L3N2Zz4K'" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTIwIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iNSIgLz4KICA8dGV4dCB4PSIxNTAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNieWU9IjQ4IiBmaWxsPSIjNjZmY2YxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DRVNBPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPjJLMjQ8L3RleHQ+Cjwvc3ZnPgo='" 
                  class="image-loading">
         </div>
     </section>
@@ -733,7 +786,7 @@
                 <i class='bx bxs-music'></i>
                 <h3>Cultural</h3>
                 <img class="event-img" src="images/college culture.jpg" alt="Cultural Event"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjEwMCIgcyB5PSIxMDAiIHI9IjYwIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iMyIgLz4KICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNjZmM2YzciIHN0cm9rZS13aWR0aD0iMiIgLz4KICA8cGF0aCBkPSJNNzAgMTAwIEwxMzAgMTAwIiBzdHJva2U9IiNjZmM2YzciIHN0cm9rZS13aWR0aD0iMiIgLz4KICA8dGV4dCB4PSIyNTAiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjY2ZjNmM3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DdWx0dXJhbCBFdmVudHM8L3RleHQ+Cjwvc3ZnPg=='" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNjAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2NmYzZjNyIgc3Ryb2tlLXdpZHRoPSIyIiAvPgogIDxwYXRoIGQ9Ik03MCAxMDAgTDEzMCAxMDAiIHN0cm9rZT0iI2NmYzZjNyIgc3Ryb2tlLXdpZHRoPSIyIiAvPgogIDx0ZXh0IHg9IjI1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPkN1bHR1cmFsIEV2ZW50czwvdGV4dD4KPC9zdmc+'" 
                      class="image-loading">
                 <p>We're a diverse group celebrating global heritage through art, tradition, and storytelling. Join us in embracing the richness of cultures worldwide.</p>
                 <a href="culevent.html" class="btn event-link" id="cultural-btn">Know More</a>
@@ -742,7 +795,7 @@
                 <i class='bx bx-code-alt'></i>
                 <h3>Technical</h3>
                 <img class="event-img" src="images/technical images 1.jpg" alt="Technical Event"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSI gaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxwYXRoIGQ9Ik03MCA3MCBMMTMwIDEzMCBNMTMwIDcwIEw3MCAxMzAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNjAgODAgTDIyMCA4MCBNMTYwIDEyMCBMMjIwIDEyMCBNMTYwIDEwMCBMMjIwIDEwMCIgc3Ryb2tlPSIjNjZmY2YxIiBzdHJva2Utd2lkdGgPSIzIiAvPgogIDx0ZXh0IHg9IjI5NSIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNjZmM2YzciB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UZWNobmljYWwgRXZlbnRzPC90ZXh0Pgo8L3N2Zz4K'" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxwYXRoIGQ9Ik03MCA3MCBMMTMwIDEzMCBNMTMwIDcwIEw3MCAxMzAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNjAgODAgTDIyMCA4MCBNMTYwIDEyMCBMMjIwIDEyMCBNMTYwIDEwMCBMMjIwIDEwMCIgc3Ryb2tlPSIjNjZmY2YxIiBzdHJva2Utd2lkdGgPSIzIiAvPgogIDx0ZXh0IHg9IjI5NSIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9y=" 
                      class="image-loading">
                 <p>Driving innovation and progress, our dynamic Technical Team pushes technology's boundaries, turning ideas into real-world solutions for positive digital change.</p>
                 <a href="techevent.html" class="btn event-link" id="technical-btn">Know More</a>
@@ -751,7 +804,7 @@
                 <i class='bx bx-trophy'></i>
                 <h3>Sports</h3>
                 <img class="event-img" src="images/sports images 2.jpg" alt="Sports Event"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNTAgNjAgTDIyMCA2MCBMMjUwIDEwMCBMMjIwIDE0MCBMMTUwIDE0MCBMMTIwIDEwMCBaIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iMyIgLz4KICA8dGV4dCB4PSIyOTUiIHk=" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNTAgNjAgTDIyMCA2MCBMMjUwIDEwMCBMMjIwIDE0MCBMMTUwIDE0MCBMMTIwIDEwMCBaIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iMyIgLz4KICA8dGV4dCB4PSIyOTUiIHk9IjEwMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjI0IiBmaWxsPSIjY2ZjNmM3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5TcG9ydHMgRXZlbnRzPC90ZXh0Pgo8L3N2Zz4='"
                      class="image-loading">
                 <p>We're the embodiment of dedication, passion, and the pursuit of excellence. Join our community of athletes, coaches, and fans as we live and breathe the thrill of competition.</p>
                 <a href="sportevent.html" class="btn event-link" id="sports-btn">Know More</a>
@@ -765,7 +818,7 @@
         <div class="team-container">
             <div class="team-img" data-aos="fade-right">
                 <img src="images/tecnical team jpg.jpg" alt="Team Photo"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0=" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjIwMCIgcj0iODAiIGZpbGw9IiMwYmNjMTAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSI1IiAvPgogIDx0ZXh0IHg9IjMwMCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiM2NmZjZjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRlYW08L3RleHQ+Cjwvc3ZnPg=='" 
                      class="image-loading">
             </div>
             <div class="team-content" data-aos="fade-left">
@@ -791,6 +844,11 @@
                 <p><i class='bx bx-map'></i> Handewadi Road, Satav Nagar Hadapsar, Pune - 411 028, Maharashtra, India</p>
                 <p><i class='bx bx-envelope'></i> contactmycesa@gmail.com</p>
             </div>
+        </div>
+        
+        <!-- Made with love text -->
+        <div class="made-with-love">
+            Made with <span>♥</span> by Prateek
         </div>
     </footer>
 
@@ -872,7 +930,7 @@
             });
         });
 
-        // Theme Song Player
+        // Theme Song Player with Cross-Page Continuity
         const themeSongBtn = document.getElementById('theme-song-btn');
         const themeSong = document.getElementById('theme-song');
         let isPlaying = false;
@@ -901,18 +959,27 @@
                 
                 // Then play if it was playing
                 themeSong.play().then(() => {
-                    themeSongBtn.innerHTML = '<i class="bx bx-pause-circle"></i> Pause Theme Song';
-                    themeSongBtn.classList.add('playing');
+                    updateButtonState(true);
                     isPlaying = true;
                 }).catch(err => {
                     console.log('Autoplay prevented:', err);
                     // If autoplay is prevented, reset the state
                     localStorage.setItem('themeSongPlaying', 'false');
                     localStorage.setItem('themeSongPosition', '0');
-                    themeSongBtn.innerHTML = '<i class="bx bx-play-circle"></i> Play Theme Song';
-                    themeSongBtn.classList.remove('playing');
+                    updateButtonState(false);
                     isPlaying = false;
                 });
+            }
+        }
+
+        // Update button appearance based on playback state
+        function updateButtonState(playing) {
+            if (playing) {
+                themeSongBtn.innerHTML = '<i class="bx bx-pause-circle"></i> Pause Theme Song';
+                themeSongBtn.classList.add('playing');
+            } else {
+                themeSongBtn.innerHTML = '<i class="bx bx-play-circle"></i> Play Theme Song';
+                themeSongBtn.classList.remove('playing');
             }
         }
 
@@ -920,19 +987,18 @@
         themeSongBtn.addEventListener('click', function() {
             if (isPlaying) {
                 themeSong.pause();
-                this.innerHTML = '<i class="bx bx-play-circle"></i> Play Theme Song';
-                this.classList.remove('playing');
+                isPlaying = false;
+                updateButtonState(false);
             } else {
                 themeSong.play().then(() => {
-                    this.innerHTML = '<i class="bx bx-pause-circle"></i> Pause Theme Song';
-                    this.classList.add('playing');
+                    isPlaying = true;
+                    updateButtonState(true);
                 }).catch(err => {
                     console.log('Playback failed:', err);
                     // If playback fails, show a message to the user
                     alert('Please interact with the page first to enable audio playback.');
                 });
             }
-            isPlaying = !isPlaying;
             savePlaybackState();
         });
 
@@ -945,10 +1011,9 @@
 
         // Handle when the song ends
         themeSong.addEventListener('ended', function() {
-            themeSongBtn.innerHTML = '<i class="bx bx-play-circle"></i> Play Theme Song';
-            themeSongBtn.classList.remove('playing');
             isPlaying = false;
             themeSong.currentTime = 0;
+            updateButtonState(false);
             savePlaybackState();
         });
 
@@ -1002,6 +1067,11 @@
                 // Allow the navigation to proceed normally
                 // The beforeunload event will also save the state as a backup
             });
+        });
+
+        // Initialize the theme song player
+        document.addEventListener('DOMContentLoaded', function() {
+            restorePlaybackState();
         });
     </script>
 </body>
