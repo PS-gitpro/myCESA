@@ -168,6 +168,7 @@
             position: relative;
             color: transparent;
             -webkit-text-stroke: 1px var(--text-color);
+            display: inline-block; /* Added for better mobile handling */
         }
 
         .text::before {
@@ -179,6 +180,7 @@
             -webkit-text-stroke: 0px transparent;
             overflow: hidden;
             animation: fill 3s ease-in-out forwards;
+            white-space: nowrap; /* Prevent text wrapping during animation */
         }
 
         @keyframes fill {
@@ -601,6 +603,7 @@
             
             .home-content h1 {
                 font-size: 4.2rem;
+                line-height: 1.2; /* Better line height for mobile */
             }
             
             .home-content h3 {
@@ -609,6 +612,19 @@
             
             .event-box h3 {
                 font-size: 2.6rem; /* Adjusted for mobile */
+            }
+            
+            .text {
+                -webkit-text-stroke: 0.5px var(--text-color); /* Thinner stroke for mobile */
+            }
+            
+            .text::before {
+                animation: fill-mobile 2.5s ease-in-out forwards; /* Slightly faster for mobile */
+            }
+            
+            @keyframes fill-mobile {
+                0% { width: 0%; }
+                100% { width: 100%; }
             }
         }
 
@@ -657,6 +673,10 @@
             
             .made-with-love {
                 font-size: 1.4rem;
+            }
+            
+            .text {
+                -webkit-text-stroke: 0.3px var(--text-color); /* Even thinner stroke for small screens */
             }
         }
 
@@ -773,7 +793,7 @@
         <div class="home-img" data-aos="fade-left">
             <!-- CESA Logo -->
             <img src="images/cesa logo 2.png" alt="CESA Logo" 
-                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTIwIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iNSIgLz4KICA8dGV4dCB4PSIxNTAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNieWU9IjQ4IiBmaWxsPSIjNjZmY2YxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DRVNBPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPjJLMjQ8L3RleHQ+Cjwvc3ZnPgo='" 
+                 onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iMTIwIiBmaWxsPSIjMGJjYzEwIiBzdHJva2U9IiM2NmZjZjEiIHN0cm9rZS13aWR0aD0iNSIgLz4KICA8dGV4dCB4PSIxNTAiIHk9IjE0MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNieWU9IjQ4IiBmaWxsPSIjNjZmY2YxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5DRVNBPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9yPSJmiWRkbGUiPjJLMjQ8L3RleHQ+Cjwvc3ZnPgo='" 
                  class="image-loading">
         </div>
     </section>
@@ -795,7 +815,7 @@
                 <i class='bx bx-code-alt'></i>
                 <h3>Technical</h3>
                 <img class="event-img" src="images/technical images 1.jpg" alt="Technical Event"
-                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxwYXRoIGQ9Ik03MCA3MCBMMTMwIDEzMCBNMTMwIDcwIEw3MCAxMzAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNjAgODAgTDIyMCA4MCBNMTYwIDEyMCBMMjIwIDEyMCBNMTYwIDEwMCBMMjIwIDEwMCIgc3Ryb2tlPSIjNjZmY2YxIiBzdHJva2Utd2lkdGgPSIzIiAvPgogIDx0ZXh0IHg9IjI5NSIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNjZmM2YzciIHRleHQtYW5jaG9y=" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGViZ2h0PSIxMDAlIiBmaWxsPSIjMWYyODMzIiAvPgogIDxwYXRoIGQ9Ik03MCA3MCBMMTMwIDEzMCBNMTMwIDcwIEw3MCAxMzAiIHN0cm9rZT0iIzY2ZmNmMSIgc3Ryb2tlLXdpZHRoPSIzIiAvPgogIDxwYXRoIGQ9Ik0xNjAgODAgTDIyMCA4MCBNMTYwIDEyMCBMMjIwIDEyMCBNMTYwIDEwMCBMMjIwIDEwMCIgc3Ryb2tlPSIjNjZmY2YxIiBzdHJva2Utd2lkdGg9IjMiIC8+CiAgPHRleHQgeD0iMjk1IiB5PSIxMDAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2NmYzZjNyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaG5pY2FsIEV2ZW50czwvdGV4dD4KPC9zdmc+'" 
                      class="image-loading">
                 <p>Driving innovation and progress, our dynamic Technical Team pushes technology's boundaries, turning ideas into real-world solutions for positive digital change.</p>
                 <a href="techevent.html" class="btn event-link" id="technical-btn">Know More</a>
