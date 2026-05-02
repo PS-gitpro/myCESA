@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Events - CESA</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0b0c10;
+            color: #cfc6c7;
+            font-family: "Poppins", sans-serif;
+            padding: 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        /* Smooth scrolling for better UX */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Enhanced header with subtle animation */
+        header {
+            background: linear-gradient(rgba(11, 12, 16, 0.92), rgba(11, 12, 16, 0.75)), url('images/college-culture2.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #ff5e7d;
+            position: relative;
+            isolation: isolate;
+        }
+        
+        /* Subtle animated overlay */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,94,125,0.08) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: #ff5e7d;
+            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #cfc6c7;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+        
+        /* Premium back button with micro-interactions */
+        .back-btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background: #ff5e7d;
+            color: #0b0c10;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            margin-bottom: 2rem;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.3px;
+        }
+        
+        .back-btn:hover {
+            background: #ff3b68;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(255, 94, 125, 0.35);
+        }
+        
+        .back-btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* ========== PREMIUM EVENT CARD ========== */
+        .event-card {
+            background: #1f2833;
+            border-radius: 20px;          /* Modern larger radius */
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Premium hover effect - depth + subtle glow */
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -12px rgba(255, 94, 125, 0.25), 0 0 0 1px rgba(255, 94, 125, 0.1);
+        }
+        
+        /* Image container for better presentation */
+        .event-img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: block;
+        }
+        
+        /* Premium zoom on hover with smooth easing */
+        .event-card:hover .event-img {
+            transform: scale(1.05);
+        }
+        
+        /* Subtle gradient overlay on image for depth */
+        .event-card {
+            position: relative;
+        }
+        
+        .event-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 230px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(11,12,16,0.3) 100%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .event-card:hover::after {
+            opacity: 1;
+        }
+        
+        /* Content area refined spacing */
+        .event-content {
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 0.5rem;
+        }
+        
+        /* Typography refinement */
+        .event-title {
+            color: #ff5e7d;
+            margin-bottom: 0.6rem;
+            font-size: 1.45rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.3px;
+        }
+        
+        .event-desc {
+            margin-bottom: 1rem;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #ddd6d8;
+            font-weight: 400;
+        }
+        
+        .event-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            color: #b8afb1;
+        }
+        
+        .event-details:last-of-type {
+            margin-bottom: 1.2rem;
+        }
+        
+        .event-details i {
+            margin-right: 0.6rem;
+            color: #ff5e7d;
+            width: 1.2rem;
+            font-size: 1rem;
+        }
+        
+        /* Premium button with micro-interactions */
+        .register-btn {
+            display: block;
+            width: 100%;
+            padding: 0.85rem;
+            background: transparent;
+            color: #ff5e7d;
+            border: 2px solid #ff5e7d;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(2px);
+        }
+        
+        /* Button subtle shine effect on hover */
+        .register-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 94, 125, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .register-btn:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+        
+        .register-btn:hover {
+            background: #ff5e7d;
+            color: #0b0c10;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 94, 125, 0.3);
+            border-color: transparent;
+        }
+        
+        .register-btn:active {
+            transform: translateY(0px);
+        }
+        
+        /* Premium countdown section */
+        .countdown {
+            background: linear-gradient(135deg, #1f2833 0%, #161b24 100%);
+            padding: 2rem;
+            border-radius: 24px;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 94, 125, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        
+        .countdown-title {
+            color: #ff5e7d;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            font-size: 1.6rem;
+            letter-spacing: -0.3px;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+        }
+        
+        .timer-unit {
+            background: rgba(11, 12, 16, 0.8);
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            min-width: 85px;
+            border: 1px solid rgba(255, 94, 125, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+        
+        .timer-unit:hover {
+            border-color: #ff5e7d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 94, 125, 0.15);
+        }
+        
+        .timer-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ff5e7d;
+            letter-spacing: 1px;
+        }
+        
+        .timer-label {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: #cfc6c7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+        
+        /* Cultural highlights premium styling */
+        .cultural-highlights {
+            display: flex;
+            justify-content: space-between;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+        
+        .highlight {
+            flex: 1;
+            min-width: 220px;
+            background: linear-gradient(135deg, #1f2833 0%, #1a222e 100%);
+            padding: 1.8rem 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 94, 125, 0.08);
+            backdrop-filter: blur(2px);
+        }
+        
+        .highlight:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 94, 125, 0.3);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.4);
+        }
+        
+        .highlight i {
+            font-size: 2.8rem;
+            color: #ff5e7d;
+            margin-bottom: 1rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .highlight:hover i {
+            transform: scale(1.1);
+        }
+        
+        .highlight h3 {
+            color: #ff5e7d;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .highlight p {
+            font-size: 0.85rem;
+            color: #cfc6c7;
+            line-height: 1.5;
+        }
+        
+        /* Premium footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1f28 0%, #13171f 100%);
+            border-top: 1px solid rgba(255, 94, 125, 0.2);
+            backdrop-filter: blur(4px);
+        }
+        
+        footer p {
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-top: 1.2rem;
+        }
+        
+        .social-icons a {
+            color: #cfc6c7;
+            font-size: 1.8rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            color: #ff5e7d;
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        /* ========== RESPONSIVENESS REFINEMENT ========== */
+        @media (max-width: 768px) {
+            .events-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .timer {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .timer-unit {
+                min-width: 70px;
+                padding: 0.8rem;
+            }
+            
+            .timer-value {
+                font-size: 1.6rem;
+            }
+            
+            .cultural-highlights {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            
+            .highlight {
+                min-width: auto;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .event-img {
+                height: 200px;
+            }
+            
+            .event-content {
+                padding: 1.2rem;
+            }
+            
+            .countdown-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .event-img {
+                height: 180px;
+            }
+            
+            .event-title {
+                font-size: 1.25rem;
+            }
+            
+            .register-btn {
+                padding: 0.7rem;
+                font-size: 0.85rem;
+            }
+            
+            .countdown {
+                padding: 1.2rem;
+            }
+            
+            .timer-unit {
+                min-width: 60px;
+                padding: 0.6rem;
+            }
+            
+            .timer-value {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .events-grid {
+                gap: 1.5rem;
+            }
+            
+            .event-img {
+                height: 210px;
+            }
+        }
+        
+        /* Refined detail elements */
+        .event-details div {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        @media (max-width: 600px) {
+            .event-details {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .event-details div {
+                white-space: normal;
+            }
+        }
+        
+        /* Subtle scrollbar for premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1f2833;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #ff5e7d;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff3b68;
+        }
+        
+        /* Smooth focus states for accessibility */
+        .register-btn:focus-visible,
+        .back-btn:focus-visible,
+        .social-icons a:focus-visible {
+            outline: 2px solid #ff5e7d;
+            outline-offset: 3px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CESA Cultural Events 2023-24</h1>
+            <p class="subtitle">Celebrate diversity and creativity through our vibrant cultural events. Experience the rich traditions and celebrations organized by the Computer Engineering Student Association!</p>
+            <a href="index.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Home</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="countdown">
+            <h2 class="countdown-title">Countdown to Next Event</h2>
+            <div class="timer">
+                <div class="timer-unit">
+                    <div class="timer-value" id="days">00</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="hours">00</div>
+                    <div class="timer-label">Hours</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="minutes">00</div>
+                    <div class="timer-label">Minutes</div>
+                </div>
+                <div class="timer-unit">
+                    <div class="timer-value" id="seconds">00</div>
+                    <div class="timer-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cultural-highlights">
+            <div class="highlight">
+                <i class='bx bx-calendar-event'></i>
+                <h3>Celebrations</h3>
+                <p>Marking important occasions with traditional ceremonies</p>
+            </div>
+            <div class="highlight">
+                <i class='bx bx-party'></i>
+                <h3>Social Events</h3>
+                <p>Building community through fun gatherings and parties</p>
+            </div>
+            <div class="highlight">
+                <i class='bx bx-group'></i>
+                <h3>Student Participation</h3>
+                <p>Events organized by and for students</p>
+            </div>
+            <div class="highlight">
+                <i class='bx bx-food-menu'></i>
+                <h3>Cultural Traditions</h3>
+                <p>Honoring our rich cultural heritage</p>
+            </div>
+        </div>
+
+        <div class="events-grid">
+            <!-- Event 1 - Teachers Day -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR TEACHERS DAY IMAGE -->
+                <img src="images/teachers-day.jpg" alt="Teachers Day Celebration" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Teachers Day Celebration</h3>
+                    <p class="event-desc">Honoring our educators for their dedication and guidance in shaping the future of computer engineering students.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Sept 5, 2024</div>
+                        <div><i class='bx bx-time'></i> 3:30 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Jayawant Sabhagrah, JSCOE</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+
+            <!-- Event 2 - Guru Purnima -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR GURU PURNIMA IMAGE -->
+                <img src="images/guru-purnima.jpg" alt="Guru Purnima Celebration" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Guru Purnima Celebration</h3>
+                    <p class="event-desc">Express gratitude for your Gurus' wisdom and guidance, seeking their blessings to dispel ignorance and lead toward enlightenment.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> July 21, 2024</div>
+                        <div><i class='bx bx-time'></i> 3:30 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Seminar Hall, Computer Engineering Department</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+
+            <!-- Event 3 - Freshers Party -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR FRESHERS PARTY IMAGE -->
+                <img src="images/freshers-party.jpg" alt="Freshers Party" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Freshers Party</h3>
+                    <p class="event-desc">Welcome new students to the Computer Engineering family with a Bollywood/Retro themed party filled with fun and excitement.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> Sept 28, 2023</div>
+                        <div><i class='bx bx-time'></i> 1:00 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Seminar Hall, Computer Engineering Department</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+
+            <!-- Event 4 - Farewell Party -->
+            <div class="event-card">
+                <!-- REPLACE THIS IMAGE SOURCE WITH YOUR FAREWELL PARTY IMAGE -->
+                <img src="images/farewell-party.jpg" alt="Farewell Party" class="event-img">
+                <div class="event-content">
+                    <h3 class="event-title">Farewell Party: Batch 2023</h3>
+                    <p class="event-desc">"The Great Escape: From College to Career" - A memorable farewell for our graduating students as they embark on their professional journeys.</p>
+                    <div class="event-details">
+                        <div><i class='bx bx-calendar'></i> April 16, 2023</div>
+                        <div><i class='bx bx-time'></i> 6:00 PM</div>
+                    </div>
+                    <div class="event-details">
+                        <div><i class='bx bx-map'></i> Hotel Garden Gate</div>
+                    </div>
+                    <button class="register-btn">View Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2023-24 Computer Engineering Student Association (CESA). All rights reserved.</p>   
+        </div>
+    </footer>
+
+    <script>
+        // Countdown timer functionality - set to next event date
+        function updateCountdown() {
+            // Set to the next upcoming event date
+            const eventDate = new Date('July 21, 2024 15:30:00').getTime();
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+            
+            if (distance < 0) {
+                document.getElementById("days").innerText = "0";
+                document.getElementById("hours").innerText = "0";
+                document.getElementById("minutes").innerText = "0";
+                document.getElementById("seconds").innerText = "0";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Register button functionality
+        document.querySelectorAll('.register-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const eventTitle = this.parentElement.querySelector('.event-title').innerText;
+                alert(`Thank you for your interest in ${eventTitle}! This event has already taken place.`);
+            });
+        });
+    </script>
+</body>
+</html>
